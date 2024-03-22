@@ -42,7 +42,14 @@ class PipelineStack(Stack):
         output=source_output,
         connection_arn="arn:aws:codestar-connections:ap-south-1:679104321736:connection/569edc22-8e0c-4438-a3ae-4c011840a78f"
         )
+           # steps to create code connections to connect third party app such as bitbucket and retrive ARN :
         
+           # 1 ) use aws cli and run  " aws codestar-connections create-connection --provider-type Bitbucket --connection-name xyz "
+           # 2 ) if you get "unknown output type : none" , your connection has been build successfully.
+           # 3 ) login to aws console , developer tools < settings < connections
+           # 4 ) by default connections are in pending state so you have to manually update the connection. once you  click on update button a new window will pop up , in that window add your connection name and bitbucket id or install the app. get the ARN at connections
+           # thats it !
+ 
 
 
         # Add a CodePipeline stage for CodeBuild
