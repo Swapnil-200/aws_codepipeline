@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import yaml
 
 import aws_cdk as cdk
 
@@ -7,7 +8,18 @@ from pipeline.pipeline_stack import PipelineStack
 
 
 app = cdk.App()
-PipelineStack(app, "PipelineStack",
+
+with open('repo.yaml', 'r') as envfile:
+    yaml_environment = yaml.safe_load(envfile)
+
+for i in range(len(yaml_environment['repos'])):
+    repo = yaml_environment['repos'][i]['name']
+    pipeline = yaml_environment['pipelines'][i]['name']
+
+
+      
+
+    PipelineStack(app, f"PipelineStack-{i}", repo , pipeline,
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.

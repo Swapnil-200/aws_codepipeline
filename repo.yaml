@@ -1,0 +1,8 @@
+repos:
+  - name: "repo1"
+  - name: "repo2"
+  - name: "repo3"
+pipelines:
+  - name: spi_test1
+  - name: spi_test2
+  - name: spi_test3
